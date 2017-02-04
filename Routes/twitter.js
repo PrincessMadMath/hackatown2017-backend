@@ -16,19 +16,24 @@ router.get('/sigin', function (req, res) {
 })
 
 router.get('/feedbyhashtag/:hashtag', function (req, res) {
-    var query = '#' + req.params.hashtag;
-    console.log(query);
-    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
-        if(!err){
-            res.json(data)
-        }
-        else{
-            res.json(err)
-        }
-    })
+    res.json(getTweetsByHashtag(req.params.hashtag))
 })
 
+router.get('/monparc'), function (req, res){
+    res.json(getTweetsByHashtag('monparc'))
+}
 
-
+const getTweetsByHashtag = (hashtag) => {
+    var query = '#' + hashtag;
+    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
+        if(!err){
+            return data;
+        }
+        else{
+            console.log(err);
+            throw err;
+        }
+    })
+}
 
 module.exports = router
