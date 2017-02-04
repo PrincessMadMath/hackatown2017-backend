@@ -39,6 +39,32 @@ router.get('/feedbyhashtag/:hashtag', function (req, res) {
     })
 })
 
+router.get('/feedbyusername/:username', function (req, res) {
+    var query = 'from:' + req.params.username;
+    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
+        if(!err){
+            res.json(data);
+        }
+        else{
+            res.json(err);
+            throw err;
+        }
+    })
+})
+
+router.get('/feedbycontent/:content', function (req, res) {
+    var query = req.params.content;
+    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
+        if(!err){
+            res.json(data);
+        }
+        else{
+            res.json(err);
+            throw err;
+        }
+    })
+})
+
 router.get('/monparc', function (req, res){
     var query = '#' + 'monparc';
     client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
