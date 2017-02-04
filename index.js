@@ -1,9 +1,11 @@
 var express = require('express')
-var app = express()
+const app = express()
+const router = express.Router()
 
-app.get('/', function (req, res) {
-  res.json({"message": "Hello World!"})
-})
+const routes = require('./Routes')
+
+app.use('/', routes)
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, function () {
