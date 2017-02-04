@@ -1,12 +1,7 @@
 var express = require('express')
 var twitter = require('twitter')
-var env = require('node-env-file');
 
 const router = express.Router()
-
-
-// Loading environment variables from .env file
-env(__dirname + '/../.env');
 
 var client = new twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
