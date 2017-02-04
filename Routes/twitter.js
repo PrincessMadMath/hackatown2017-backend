@@ -1,8 +1,15 @@
 var express = require('express')
 var twitter = require('twitter')  
-var env = require('node-env-file');
+
+
+if(!process.env.IS_AWS)
+{
+    var env = require('node-env-file');
+    env(__dirname + '/../.env');
+}
 
 const router = express.Router()
+
 
 var client = new twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
