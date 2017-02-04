@@ -15,6 +15,4 @@ router.get('/secret', function (req, res) {
 })
 
 
-
-
 module.exports = router
