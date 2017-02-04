@@ -34,7 +34,6 @@ router.get('/feedbyhashtag/:hashtag', function (req, res) {
         }
         else{
             res.json(err);
-            throw err;
         }
     })
 })
@@ -47,7 +46,6 @@ router.get('/feedbyusername/:username', function (req, res) {
         }
         else{
             res.json(err);
-            throw err;
         }
     })
 })
@@ -60,7 +58,18 @@ router.get('/feedbycontent/:content', function (req, res) {
         }
         else{
             res.json(err);
-            throw err;
+        }
+    })
+})
+
+router.get('/geolocal', function (req, res) {
+    var geocode = req.query.lat + ',' + req.query.lon + ',' + req.query.radius 
+    client.get('search/tweets', {geocode: geocode, count: 10 }, function(err, data, response) {
+        if(!err){
+            res.json(data);
+        }
+        else{
+            res.json(err);
         }
     })
 })
@@ -73,7 +82,6 @@ router.get('/monparc', function (req, res){
         }
         else{
             res.json(err);
-            throw err;
         }
     })
 })
@@ -95,7 +103,6 @@ router.get('/positiveparcs', function(req, res){
         }
         else{
             res.json(err);
-            throw err;
         }
     })
 })
@@ -117,7 +124,6 @@ router.get('/negativeparcs', function(req, res){
         }
         else{
             res.json(err);
-            throw err;
         }
     })
 })
