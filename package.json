@@ -1,0 +1,18 @@
+{
+  "name": "dndhelper-backend",
+  "version": "0.0.1",
+  "description": "Backend for the PAM application",
+  "main": "index.js",
+  "repository": "https://github.com/PrincessMadMath/DndHelper-Backend.git",
+  "author": "Mathieu <math.gamache@gmail.com>",
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
