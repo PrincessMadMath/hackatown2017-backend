@@ -118,7 +118,7 @@ router.get('/negativeparcs', function(req, res){
     var parcs = req.body
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.bad.length; j < len; j++) {
-          query = query + parcs[i] + ' ' + sentiments.bad[j]
+          query = query + parcs[i].name + ' ' + sentiments.bad[j]
           if(i+1 < lenp){
             query = query + ' OR '
           }
