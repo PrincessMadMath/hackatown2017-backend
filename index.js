@@ -13,6 +13,9 @@ const routes = require('./Routes')
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
+    res.header('Access-Control-Allow-Origin', 'https://mon-parc.netlify.com');
+    res.header('Access-Control-Allow-Origin', 'http://mon-parc.netlify.com');
+
     next();
 }
 
