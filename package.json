@@ -15,6 +15,7 @@
   "dependencies": {
     "express": "^4.14.1",
     "node-env-file": "^0.1.8",
+    "node-googleplaces": "^0.1.2",
     "twit": "^2.2.5",
     "twitter": "^1.7.0"
   },

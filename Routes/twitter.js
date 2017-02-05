@@ -8,7 +8,6 @@ if(!process.env.IS_AWS)
     env(__dirname + '/../.env');
 }
 
-var parcs = JSON.parse(fs.readFileSync(__dirname + '/../Data/parcs.json', 'utf8')).parcs;
 var sentiments = JSON.parse(fs.readFileSync(__dirname + '/../Data/sentiments.json', 'utf8'));
 
 const router = express.Router()
@@ -87,7 +86,7 @@ router.get('/monparc', function (req, res){
 })
 
 router.get('/positiveparcs', function(req, res){
-    var query = ''
+    var parcs = req.body
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.good.length; j < len; j++) {
           query = query + parcs[i] + ' ' + sentiments.good[j]
@@ -108,7 +107,7 @@ router.get('/positiveparcs', function(req, res){
 })
 
 router.get('/negativeparcs', function(req, res){
-    var query = ''
+    var parcs = req.body
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.bad.length; j < len; j++) {
           query = query + parcs[i] + ' ' + sentiments.bad[j]
