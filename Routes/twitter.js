@@ -103,7 +103,7 @@ router.get('/positiveparcs', function(req, res){
         var query = ''
 
         for (var i = 0, len = sentiments.good.length; i < len; i++) {
-          query = query + parcName + ' ' + sentiments.good[j]
+          query = query + parcName + ' ' + sentiments.good[i]
           if(i+1 < len){
             query = query + ' OR '
           }
@@ -135,7 +135,7 @@ router.post('/negativeparcs', function(req, res){
         var query = ''
 
         for (var i = 0, len = sentiments.bad.length; i < len; i++) {
-          query = query + parcName + ' ' + sentiments.bad[j]
+          query = query + parcName + ' ' + sentiments.bad[i]
           if(i+1 < len){
             query = query + ' OR '
           }
