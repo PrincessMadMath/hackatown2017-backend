@@ -14,7 +14,6 @@ var allowedUrls = ['http://localhost:8000', 'https://mon-parc.netlify.com', 'htt
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', );
     var origin = req.headers.origin;
     if(allowedUrls.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);
