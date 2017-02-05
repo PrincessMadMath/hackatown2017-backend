@@ -1,21 +1,34 @@
 var express = require('express')
 const router = express.Router()
-var graph = require('fbgraph')
+
+const promise = require('bluebird')
+var graph = promise.promisifyAll(require('fbgraph'))
+
+const fakeData = require('../Data/events.json')
 
 var config = require('../Config/facebook.js')
 
-console.log(config.client_token)
 graph.setAccessToken(config.client_token)
 
-test = () => {
-    graph.get("/ParcJeanDrapeau/events", function(err, res) {
-        console.log(res);
-    })
-}
-
 router.get('/', function (req, res) {
-  test()
-  res.json({"message": "Test!"})
+    res.json({"Message": "Welcome to facebook route!"})
 })
+
+router.get('/eventsFrom/:name', function (req, res) {
+    var eventName = req.params.name;
+    graph
+        .getAsync("/" + eventName + "/events")
+        .then((data) => {
+            // Add clean up events
+            res.json(data.data.map(extract))
+        })
+        .catch((ex) => {
+            res.json(fakeData);
+        })
+})
+
+extract = (event) => {
+    return {name: event.name, description: event.description, start_time: event.start_time, end_time: event.end_time, id: event.id}
+}
 
 module.exports = router
