@@ -114,7 +114,7 @@ router.get('/positiveparcs', function(req, res){
     })
 })
 
-router.get('/negativeparcs', function(req, res){
+router.post('/negativeparcs', function(req, res){
     var parcs = req.body
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.bad.length; j < len; j++) {
