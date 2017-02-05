@@ -8,18 +8,25 @@ if(!process.env.IS_AWS)
     env(__dirname + '/../.env');
 }
 
-var parcs = JSON.parse(fs.readFileSync(__dirname + '/../Data/parcs.json', 'utf8')).parcs;
 var sentiments = JSON.parse(fs.readFileSync(__dirname + '/../Data/sentiments.json', 'utf8'));
 
 const router = express.Router()
 
 
+// var client = new twitter({
+//     consumer_key: process.env.TWITTER_CONSUMER_KEY,
+//     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+//     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+//     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+//     });
+
+// fuck it
 var client = new twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-    });
+    consumer_key: 'DRk2XjcGctp074ywMovfOKeEi',
+    consumer_secret: 'wvbftqLimErtc622XYxldsXfoc0djy3nUV0RE0naSJCQ2Mlwgi',
+    access_token_key: '2582787825-DBxonUfxzyqKF9SAETqFeLh25eCUW4foa4CwCsw',
+    access_token_secret: 'Uln4JVbEEdcwGBCEVn0rtSpotRkG6w2BAvDMSUOsvXqJk'
+});
 
 
 router.get('/signin', function (req, res) {
@@ -87,6 +94,7 @@ router.get('/monparc', function (req, res){
 })
 
 router.get('/positiveparcs', function(req, res){
+    var parcs = req.body
     var query = ''
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.good.length; j < len; j++) {
@@ -107,7 +115,9 @@ router.get('/positiveparcs', function(req, res){
     })
 })
 
-router.get('/negativeparcs', function(req, res){
+router.post('/negativeparcs', function(req, res){
+    var parcs = req.body
+    console.log(req)
     var query = ''
     for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         for (var j = 0, len = sentiments.bad.length; j < len; j++) {
