@@ -98,22 +98,22 @@ router.get('/positiveparcs', function(req, res){
     var since = req.body.date 
 
     var validParcs = []
-    for (var i = 0, len = parcs.length; i < len; i++) {
+    for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         var parcName = parcs[i]
         var query = ''
 
-        for (var i = 0, len = sentiments.good.length; i < len; i++) {
-          query = query + parcName + ' ' + sentiments.good[i]
-          if(i+1 < len){
+        for (var j = 0, len = sentiments.good.length; j < len; j++) {
+          query = query + parcName + ' ' + sentiments.good[j]
+          if(j+1 < len){
             query = query + ' OR '
           }
         }
         
-        client.get('search/tweets', { q: query, count: 2 }, function(err, data, response) {
+        client.get('search/tweets', { q: query, count: 20 }, function(err, data, response) {
             if(!err){
                 var validTimeTweets = data.statuses.filter(filterTime(since))
                 if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
-                    validParcs.push(query)
+                    validParcs.push(parcName)
                 }   
 
             }
@@ -127,32 +127,38 @@ router.get('/positiveparcs', function(req, res){
 
 router.post('/negativeparcs', function(req, res){
     var parcs = req.body.parcs
-    var since = req.body.date 
+    var since = req.body.date
+
+
+    console.log(parcs)
+    console.log(since)
 
     var validParcs = []
-    for (var i = 0, len = parcs.length; i < len; i++) {
+    for (var i = 0, lenp = parcs.length; i < lenp; i++) {
         var parcName = parcs[i]
         var query = ''
 
-        for (var i = 0, len = sentiments.bad.length; i < len; i++) {
-          query = query + parcName + ' ' + sentiments.bad[i]
-          if(i+1 < len){
+        for (var j = 0, len = sentiments.bad.length; j < len; j++) {
+          query = query + parcName + ' ' + sentiments.bad[j]
+          if(j+1 < len){
             query = query + ' OR '
           }
         }
 
-        client.get('search/tweets', { q: query, count: 2 }, function(err, data, response) {
+        client.get('search/tweets', { q: query, count: 20 }, function(err, data, response) {
             if(!err){
                 var validTimeTweets = data.statuses.filter(filterTime(since))
                 if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
-                    validParcs.push(query)
-                }   
+                    validParcs.push(parcName)
+                    console.log(validParcs)
+                } 
 
             }
             else{
                 res.json(err);
             }
-        })
+        }.bind(parcName))
+
     }
     res.json(validParcs);
     
