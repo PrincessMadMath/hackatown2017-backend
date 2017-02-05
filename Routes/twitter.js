@@ -13,12 +13,20 @@ var sentiments = JSON.parse(fs.readFileSync(__dirname + '/../Data/sentiments.jso
 const router = express.Router()
 
 
+// var client = new twitter({
+//     consumer_key: process.env.TWITTER_CONSUMER_KEY,
+//     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+//     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+//     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+//     });
+
+// fuck it
 var client = new twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-    });
+    consumer_key: DRk2XjcGctp074ywMovfOKeEi,
+    consumer_secret: wvbftqLimErtc622XYxldsXfoc0djy3nUV0RE0naSJCQ2Mlwgi,
+    access_token_key: 2582787825-DBxonUfxzyqKF9SAETqFeLh25eCUW4foa4CwCsw,
+    access_token_secret: Uln4JVbEEdcwGBCEVn0rtSpotRkG6w2BAvDMSUOsvXqJk
+});
 
 
 router.get('/signin', function (req, res) {
