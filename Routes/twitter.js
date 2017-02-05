@@ -94,48 +94,79 @@ router.get('/monparc', function (req, res){
 })
 
 router.get('/positiveparcs', function(req, res){
-    var parcs = req.body
-    var query = ''
-    for (var i = 0, lenp = parcs.length; i < lenp; i++) {
-        for (var j = 0, len = sentiments.good.length; j < len; j++) {
-          query = query + parcs[i] + ' ' + sentiments.good[j]
-          if(i+1 < lenp){
+    var parcs = req.body.parcs
+    var since = req.body.date 
+
+    var validParcs = []
+    for (var i = 0, len = parcs.length; i < len; i++) {
+        var parcName = parcs[i]
+        var query = ''
+
+        for (var i = 0, len = sentiments.good.length; i < len; i++) {
+          query = query + parcName + ' ' + sentiments.good[j]
+          if(i+1 < len){
             query = query + ' OR '
           }
         }
-    }   
+        
+        client.get('search/tweets', { q: query, count: 2 }, function(err, data, response) {
+            if(!err){
+                var validTimeTweets = data.statuses.filter(filterTime(since))
+                if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
+                    validParcs.push(query)
+                }   
 
-    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
-        if(!err){
-            res.json(data);
-        }
-        else{
-            res.json(err);
-        }
-    })
+            }
+            else{
+                res.json(err);
+            }
+        })
+    }
+    res.json(validParcs);
 })
 
 router.post('/negativeparcs', function(req, res){
-    var parcs = req.body
-    console.log(req)
-    var query = ''
-    for (var i = 0, lenp = parcs.length; i < lenp; i++) {
-        for (var j = 0, len = sentiments.bad.length; j < len; j++) {
-          query = query + parcs[i] + ' ' + sentiments.bad[j]
-          if(i+1 < lenp){
+    var parcs = req.body.parcs
+    var since = req.body.date 
+
+    var validParcs = []
+    for (var i = 0, len = parcs.length; i < len; i++) {
+        var parcName = parcs[i]
+        var query = ''
+
+        for (var i = 0, len = sentiments.bad.length; i < len; i++) {
+          query = query + parcName + ' ' + sentiments.bad[j]
+          if(i+1 < len){
             query = query + ' OR '
           }
         }
-    }   
 
-    client.get('search/tweets', { q: query, count: 10 }, function(err, data, response) {
-        if(!err){
-            res.json(data);
-        }
-        else{
-            res.json(err);
-        }
-    })
+        client.get('search/tweets', { q: query, count: 2 }, function(err, data, response) {
+            if(!err){
+                var validTimeTweets = data.statuses.filter(filterTime(since))
+                if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
+                    validParcs.push(query)
+                }   
+
+            }
+            else{
+                res.json(err);
+            }
+        })
+    }
+    res.json(validParcs);
+    
 })
+
+var filterTime (date) => {
+    return function(tweet){
+        var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        var dateTweet = new Date(tweet.created_at).getTime();
+        if (Math.floor((dateTweet - date) / _MS_PER_DAY) < 300000) {
+            return true;
+        }
+        return false;
+    }
+}
 
 module.exports = router
