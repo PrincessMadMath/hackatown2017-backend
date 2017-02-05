@@ -22,10 +22,10 @@ const router = express.Router()
 
 // fuck it
 var client = new twitter({
-    consumer_key: DRk2XjcGctp074ywMovfOKeEi,
-    consumer_secret: wvbftqLimErtc622XYxldsXfoc0djy3nUV0RE0naSJCQ2Mlwgi,
-    access_token_key: 2582787825-DBxonUfxzyqKF9SAETqFeLh25eCUW4foa4CwCsw,
-    access_token_secret: Uln4JVbEEdcwGBCEVn0rtSpotRkG6w2BAvDMSUOsvXqJk
+    consumer_key: 'DRk2XjcGctp074ywMovfOKeEi',
+    consumer_secret: 'wvbftqLimErtc622XYxldsXfoc0djy3nUV0RE0naSJCQ2Mlwgi',
+    access_token_key: '2582787825-DBxonUfxzyqKF9SAETqFeLh25eCUW4foa4CwCsw',
+    access_token_secret: 'Uln4JVbEEdcwGBCEVn0rtSpotRkG6w2BAvDMSUOsvXqJk'
 });
 
 
