@@ -148,9 +148,11 @@ router.post('/negativeparcs', function(req, res){
         if(!err){
             var validTimeTweets = data.statuses.filter(filterTime(since))
             if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
-                
                 res.json([parcName]);
-            } 
+            }
+            else{
+                res.json([])
+            }
 
         }
         else{
