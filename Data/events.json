@@ -1,0 +1,43 @@
+[{
+        "name": "Jogging Matinale",
+        "description": "Venez courir, profitez du beau temps qu'est l'hivers!",
+        "start_time": "2017-02-19T08:00:00-0400",
+        "end_time": "2017-02-19T09:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Yoga",
+        "description": "So much yoga, so much vegan, so much peace!",
+        "start_time": "2017-02-19T20:00:00-0400",
+        "end_time": "2017-02-19T21:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Picnic",
+        "description": "Miam burger! Miam miam bon burger!",
+        "start_time": "2017-02-26T11:00:00-0400",
+        "end_time": "2017-02-26T16:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Tournoi MTG",
+        "description": "Standard, modern ou commander! Venez défendre votre honneur!",
+        "start_time": "2017-03-10T19:00:00-0400",
+        "end_time": "2017-03-10T23:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Tournoi d'échec",
+        "description": "Qui va avoir l'honneur de dire échec et mat à son adversaire!",
+        "start_time": "2017-03-12T08:00:00-0400",
+        "end_time": "2017-03-12T10:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Poussage de carosse",
+        "description": "Qui pousse le plus loins le carosse du bébé!",
+        "start_time": "2017-04-20T08:00:00-0400",
+        "end_time": "2017-04-20T10:00:00-0400",
+        "id": null
+    }
+]
