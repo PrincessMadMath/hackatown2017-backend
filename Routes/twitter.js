@@ -125,6 +125,8 @@ router.get('/positiveparcs', function(req, res){
     res.json(validParcs);
 })
 
+
+
 router.post('/negativeparcs', function(req, res){
     var parcs = req.body.parcs
     var since = req.body.date
@@ -132,35 +134,29 @@ router.post('/negativeparcs', function(req, res){
 
     console.log(parcs)
     console.log(since)
+    var parcName = parcs[0]
+    var query = ''
 
-    var validParcs = []
-    for (var i = 0, lenp = parcs.length; i < lenp; i++) {
-        var parcName = parcs[i]
-        var query = ''
-
-        for (var j = 0, len = sentiments.bad.length; j < len; j++) {
-          query = query + parcName + ' ' + sentiments.bad[j]
-          if(j+1 < len){
-            query = query + ' OR '
-          }
+    for (var j = 0, len = sentiments.bad.length; j < len; j++) {
+        query = query + parcName + ' ' + sentiments.bad[j]
+        if(j+1 < len){
+        query = query + ' OR '
         }
-
-        client.get('search/tweets', { q: query, count: 20 }, function(err, data, response) {
-            if(!err){
-                var validTimeTweets = data.statuses.filter(filterTime(since))
-                if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
-                    validParcs.push(parcName)
-                    console.log(validParcs)
-                } 
-
-            }
-            else{
-                res.json(err);
-            }
-        }.bind(parcName))
-
     }
-    res.json(validParcs);
+
+    client.get('search/tweets', { q: query, count: 20 }, function(err, data, response) {
+        if(!err){
+            var validTimeTweets = data.statuses.filter(filterTime(since))
+            if (typeof validTimeTweets !== 'undefined' && validTimeTweets.length > 0) {
+                
+                res.json([parcName]);
+            } 
+
+        }
+        else{
+            res.json(err);
+        }
+    })
     
 })
 
