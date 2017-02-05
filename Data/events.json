@@ -1,6 +1,6 @@
 [{
         "name": "Jogging Matinale",
-        "description": "Venez courir, profitez du beau temps qu'est l'hivers!",
+        "description": "Venez courir, profitez du beau temps qu'est l'hiver!",
         "start_time": "2017-02-19T08:00:00-0400",
         "end_time": "2017-02-19T09:00:00-0400",
         "id": null
@@ -28,16 +28,58 @@
     },
     {
         "name": "Tournoi d'échec",
-        "description": "Qui va avoir l'honneur de dire échec et mat à son adversaire!",
+        "description": "Qui va avoir l'honneur de dire échec et mat à son adversaire?",
         "start_time": "2017-03-12T08:00:00-0400",
         "end_time": "2017-03-12T10:00:00-0400",
         "id": null
     },
     {
         "name": "Poussage de carosse",
-        "description": "Qui pousse le plus loins le carosse du bébé!",
+        "description": "Qui pousse le plus loin le carosse du bébé!",
         "start_time": "2017-04-20T08:00:00-0400",
         "end_time": "2017-04-20T10:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Épluchette de blé d'inde",
+        "description": "Venez impressionez votre blonde avec vos manières de table!",
+        "start_time": "2017-02-20T17:00:00-0400",
+        "end_time": "2017-02-20T19:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Cours de programmation pour les nuls",
+        "description": "Devenez maître du Prolog en une seule fin de semaine!",
+        "start_time": "2017-02-15T14:00:00-0400",
+        "end_time": "2017-04-15T16:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Patinage libre",
+        "description": "Venez vous asseoir sur les bancs à côté de la patinoire!",
+        "start_time": "2017-03-02T08:00:00-0400",
+        "end_time": "2017-03-02T18:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Potinage libre",
+        "description": "Venez vous asseoir sur les bancs à côté de la patinoire!",
+        "start_time": "2017-03-02T08:00:00-0400",
+        "end_time": "2017-03-02T18:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Festival de musique du terroir",
+        "description": "Venez vous délectez des merveilles du terroir!",
+        "start_time": "2017-03-04T08:00:00-0400",
+        "end_time": "2017-03-06T18:00:00-0400",
+        "id": null
+    },
+    {
+        "name": "Course de ski de fond",
+        "description": "Le fond des skis a besoin d'être cirré!",
+        "start_time": "2017-03-10T06:00:00-0400",
+        "end_time": "2017-03-10T08:00:00-0400",
         "id": null
     }
 ]
