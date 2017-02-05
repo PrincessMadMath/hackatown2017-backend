@@ -158,7 +158,7 @@ router.post('/negativeparcs', function(req, res){
     
 })
 
-var filterTime (date) => {
+var filterTime = (date) => {
     return function(tweet){
         var _MS_PER_DAY = 1000 * 60 * 60 * 24;
         var dateTweet = new Date(tweet.created_at).getTime();
