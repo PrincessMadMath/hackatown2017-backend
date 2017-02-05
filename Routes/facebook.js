@@ -23,7 +23,12 @@ router.get('/eventsFrom/:name', function (req, res) {
             res.json(data.data.map(extract))
         })
         .catch((ex) => {
-            res.json(fakeData);
+            var randomEvents = [
+                fakeData[Math.ceil((Math.random() * fakeData.length - 1))],
+                fakeData[Math.ceil((Math.random() * fakeData.length - 1))],
+                fakeData[Math.ceil((Math.random() * fakeData.length - 1))]
+            ]
+            res.json(randomEvents);
         })
 })
 
